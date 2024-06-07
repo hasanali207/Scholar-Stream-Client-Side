@@ -36,6 +36,7 @@ const router = createBrowserRouter([
         {
             path: "/addScholarship/:id",
             element: <PrivateRoute><AddScholarship></AddScholarship></PrivateRoute>,
+            
         },
         {
             path: "/items/:id",

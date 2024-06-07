@@ -7,7 +7,7 @@ const Details = () => {
     const navigate = useNavigate()
     const location = useLocation()
     const item = useLoaderData();
-    console.log(item)
+    
     const {user} = useAuth()
     const { university_name, university_image, university_location, scholarship_category, application_deadline, subject_category, application_fees, rating, _id } = item;
 

@@ -81,7 +81,7 @@ const MyApplication = () => {
             <td>{item.Subject}</td>
             <td>{item.Subject}</td>
             <td>{item.Subject}</td>
-            <td><Link  to={`/items/${item.scholarId}`}><button><FaUsersViewfinder></FaUsersViewfinder></button></Link></td>
+            <td><Link  to={`/items/${item.itemId}`}><button><FaUsersViewfinder></FaUsersViewfinder></button></Link></td>
             <td><button><FaEdit></FaEdit></button></td>
             <td><button onClick={()=>handleDelete(item._id)} className='btn btn-ghost'><FaTrashAlt></FaTrashAlt></button></td>            
             <button className='btn btn-outline'>Add Review  </button>
