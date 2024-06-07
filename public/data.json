@@ -1,0 +1,143 @@
+[
+    {
+      "university_name": "University of Oxford",
+      "university_image": "https://imgbb.host/images/1f5e9e60d708712c5.jpeg",
+      "scholarship_category": "Need-based Scholarships",
+      "university_location": {
+        "country": "United Kingdom",
+        "city": "Oxford"
+      },
+      "application_deadline": "2024-09-30",
+      "subject_category": "Various",
+      "application_fees": 750,
+      "rating": 4.8
+     
+    },
+    {
+      "university_name": "Harvard University",
+      "university_image": "https://imgbb.host/images/23e80af7d882edaac.jpeg",
+      "scholarship_category": "Merit-based Scholarships",
+      "university_location": {
+        "country": "United States",
+        "city": "Cambridge, Massachusetts"
+      },
+      "application_deadline": "2024-10-15",
+      "subject_category": "Various",
+      "application_fees": 800,
+      "rating": 4.9
+    },
+    {
+      "university_name": "Massachusetts Institute of Technology (MIT)",
+      "university_image": "https://imgbb.host/images/33147b7f41be9f027.jpeg",
+      "scholarship_category": "Need-based Scholarships",
+      "university_location": {
+        "country": "United States",
+        "city": "Cambridge, Massachusetts"
+      },
+      "application_deadline": "2024-11-01",
+      "subject_category": "Various",
+      "application_fees": 2500,
+      "rating": 4.7
+    },
+    {
+      "university_name": "Stanford University",
+      "university_image": "https://imgbb.host/images/4.jpeg",
+      "scholarship_category": "Merit-based Scholarships",
+      "university_location": {
+        "country": "United States",
+        "city": "Stanford, California"
+      },
+      "application_deadline": "2024-12-31",
+      "subject_category": "Various",
+      "application_fees": 750,
+      "rating": 4.7
+    },
+    {
+      "university_name": "University of Cambridge",
+      "university_image": "https://imgbb.host/images/5.jpeg",
+      "scholarship_category": "Merit-based Scholarships",
+      "university_location": {
+        "country": "United Kingdom",
+        "city": "Cambridge"
+      },
+      "application_deadline": "2024-10-15",
+      "subject_category": "Various",
+      "application_fees": 8000,
+      "rating": 4.8
+    },
+    {
+      "university_name": "California Institute of Technology (Caltech)",
+      "university_image": "https://imgbb.host/images/108526b1e7757dc021.png",
+      "scholarship_category": "Need-based Scholarships",
+      "university_location": {
+        "country": "United States",
+        "city": "Pasadena, California"
+      },
+      "application_deadline": "2024-11-30",
+      "subject_category": "Various",
+      "application_fees": 4500,
+      "rating": 4.6
+    },
+    {
+      "university_name": "ETH Zurich - Swiss Federal Institute of Technology",
+      "university_image": "https://imgbb.host/images/9.jpeg",
+      "scholarship_category": "Merit-based Scholarships",
+      "university_location": {
+        "country": "Switzerland",
+        "city": "Zurich"
+      },
+      "application_deadline": "2024-10-31",
+      "subject_category": "Various",
+      "application_fees": 1420,
+      "rating": 4.7
+    },
+    {
+      "university_name": "University of Chicago",
+      "university_image": "https://imgbb.host/images/6.jpeg",
+      "scholarship_category": "Need-based Scholarships",
+      "university_location": {
+        "country": "United States",
+        "city": "Chicago, Illinois"
+      },
+      "application_deadline": "2024-12-01",
+      "subject_category": "Various",
+      "application_fees": 8500,
+      "rating": 4.6
+    },
+    {
+      "university_name": "Princeton University",
+      "university_image": "https://imgbb.host/images/7.jpeg",
+      "scholarship_category": "Merit-based Scholarships",
+      "university_location": {
+        "country": "United States",
+        "city": "Princeton, New Jersey"
+      },
+      "application_deadline": "2024-11-30",
+      "subject_category": "Various",
+      "application_fees": 65,
+      "rating": 4.8
+    },
+    {
+      "university_name": "University of Tokyo",
+      "university_image": "https://imgbb.host/images/80bcbeebf5aa9dd33.png",
+      "scholarship_category": "Merit-based Scholarships",
+      "university_location": {
+        "country": "Japan",
+        "city": "Tokyo"
+      },
+      "application_deadline": "2024-10-15",
+      "subject_category": "Various",
+      "application_fees": 8000,
+      "rating": 4.7
+    }
+  ]
+
+
+  
+
+
+
+
+
+
+
