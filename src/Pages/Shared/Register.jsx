@@ -2,10 +2,12 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import useAuth from "../../Hooks/useAuth";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
+import SocialLogin from "../../components/SocialLogin";
 
 const Register = () => {
   const { createUser, updateUserData } = useAuth();
-  
+  const axiosPublic = useAxiosPublic() 
   const {
     register,
     handleSubmit,
@@ -18,7 +20,8 @@ const Register = () => {
 
   const onSubmit = (data) => {
     const { email, password, image, fullName } = data;
-
+    console.log(image)
+    
     // Validate password
     if (password.length < 6) {
       toast.error("Password must be at least 6 characters long");
@@ -35,8 +38,19 @@ const Register = () => {
     createUser(email, password)
       .then(() => updateUserData(fullName, image))
       .then(() => {
+        const userInfo = {
+          name: data.fullName,
+          email : data.email
+        }
+        axiosPublic.post('/users', userInfo )
+        .then(res =>{
+          if(res.data.insertedId){
+           
+          }
+        })
         toast.success('Registration successful');
         navigate(from);
+       
       })
       .catch(error => {
         toast.error('Registration failed: ' + error.message);
@@ -57,9 +71,10 @@ const Register = () => {
               et a id nisi.
             </p>
           </div>
+          <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
           <form
             onSubmit={handleSubmit(onSubmit)}
-            className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100"
+            
           >
             <div className="card-body">
               <div className="form-control">
@@ -124,9 +139,15 @@ const Register = () => {
                   Please Login
                 </Link>
               </label>
-            </div>
+            </div>  
           </form>
+          <div className="divider">OR</div>
+
+          <SocialLogin></SocialLogin>
+          </div>
+          
         </div>
+        
       </div>
     </>
   );

@@ -1,6 +1,6 @@
 import React from 'react'
 import useScholarItems from '../../Hooks/useScholarItems'
-import { FaDeleteLeft, FaStreetView, FaUsersViewfinder } from 'react-icons/fa6'
+import { FaDeleteLeft, FaEye, FaStreetView, FaUsersViewfinder } from 'react-icons/fa6'
 import { FaEdit, FaTrashAlt } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 import useAxiosSecure from '../../Hooks/useAxioxSecure'
@@ -53,7 +53,7 @@ const MyApplication = () => {
         <h1>Your Appllication: {scholaritems.length}</h1>
     </div>
 
-  <table className="table text-sm">
+  <table className="table text-sm w-full">
     {/* head */}
     <thead>
       <tr>
@@ -81,10 +81,10 @@ const MyApplication = () => {
             <td>{item.Subject}</td>
             <td>{item.Subject}</td>
             <td>{item.Subject}</td>
-            <td><Link  to={`/items/${item.itemId}`}><button><FaUsersViewfinder></FaUsersViewfinder></button></Link></td>
-            <td><button><FaEdit></FaEdit></button></td>
+            <td><Link  to={`/items/${item.itemId}`}><button className='btn btn-ghost'><FaEye></FaEye></button></Link></td>
+            <td><button className='btn btn-ghost'><FaEdit></FaEdit></button></td>
             <td><button onClick={()=>handleDelete(item._id)} className='btn btn-ghost'><FaTrashAlt></FaTrashAlt></button></td>            
-            <button className='btn btn-outline'>Add Review  </button>
+            <td><button className='btn btn-outline'>Add Review  </button></td>
           </tr>)
     }
         

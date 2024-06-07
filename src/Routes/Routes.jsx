@@ -11,6 +11,10 @@ import Dashboard from "../Layout/Dashboard";
 import MyProfile from "../Pages/Dashboard/MyProfile";
 import MyApplication from "../Pages/Dashboard/MyApplication";
 import MyReview from "../Pages/Dashboard/MyReview";
+import AddScholarShip from "../Pages/Dashboard/AddScholarShip";
+import AppliedApplication from "../Pages/Dashboard/AppliedApplication";
+import AllUsers from "../Pages/Dashboard/AllUsers";
+import AllReviews from "../Pages/Dashboard/AllReviews";
 
 const router = createBrowserRouter([
     {
@@ -48,15 +52,35 @@ const router = createBrowserRouter([
     },
     {
         path: 'dashboard',
-        element: <Dashboard></Dashboard>,
+        element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
         children:[
-            {
+            {   
                 path:'profile',
                 element:  <MyProfile></MyProfile>
             },
             {
                 path:'applicaiton',
                 element:  <MyApplication></MyApplication>
+            },
+            {
+                path:'review',
+                element:  <MyReview></MyReview>
+            },
+            {
+                path:'addscholarship',
+                element:  <AddScholarShip></AddScholarShip>
+            },
+            {
+                path:'allapplyscholarship',
+                element:  <AppliedApplication></AppliedApplication>
+            },
+            {
+                path:'allusers',
+                element:  <AllUsers></AllUsers>
+            },
+            {
+                path:'allreview',
+                element:  <AllReviews></AllReviews>
             },
             {
                 path:'review',
