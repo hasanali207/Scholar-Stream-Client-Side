@@ -7,9 +7,9 @@ const Details = () => {
     const navigate = useNavigate()
     const location = useLocation()
     const item = useLoaderData();
-    
+    const {scholarshipName, university_name, university_image, universityCountry, universityCity, universityWorldRank, subjectCategory, scholarshipCategory, degree, tuitionFees, applicationFees, serviceCharge, applicationDeadline, scholarshipPostDate, _id } = item
     const {user} = useAuth()
-    const { university_name, university_image, university_location, scholarship_category, application_deadline, subject_category, application_fees, rating, _id } = item;
+   
 
     const handleScholar =() => {
         if(user && user.email){
@@ -42,14 +42,14 @@ const Details = () => {
             <img src={university_image} alt="Shoes" className="" />
           </figure>
             <h2>{university_name}</h2>
-            <p>Category: {scholarship_category}</p>
-            <p>Deadline: {application_deadline}</p>
-            <p>Country: {university_location.country}</p>
-            <p>City: {university_location.city}</p>
-            <p>Deadline: {application_deadline}</p>
-            <p>Subject Category: {subject_category}</p>
-            <p>Application Fees: {application_fees}</p>
-            <p>Rating: {rating}</p>
+            <p>Category: {scholarshipCategory}</p>
+            <p>Publish: {scholarshipPostDate}</p>
+            <p>Country: {universityCountry}</p>
+            <p>City: {universityCity}</p>
+            <p>Deadline: {applicationDeadline}</p>
+            <p>Subject Category: {subjectCategory}</p>
+            <p>Application Fees: {applicationFees}</p>
+            
             
             <Link to={`/addScholarship/${_id}`} onClick={handleScholar}>
                 <button  className='btn btn-outline my-4'>Apply Scholarship</button>

@@ -1,17 +1,22 @@
 import { useEffect } from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import useAxiosSecure from "../../Hooks/useAxioxSecure";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
+import useItems from "../../Hooks/useItems";
 
 
 const AllScholarship = () => {
+  const [items, refetch] = useItems()
 
-  const [items, setItems] = useState([]);
-  // const {university_name, university_image, scholarship_category, application_deadline, subject_category, application_fees, rating} = items
-   useEffect(() => {
-      fetch('http://localhost:5000/items')
-          .then(res => res.json())
-          .then(data => setItems(data))
-  }, [])
+  // const [items, setItems] = useState([]);
+  // const axiosPublic = useAxiosPublic()
+  // // const {university_name, university_image, scholarship_category, application_deadline, subject_category, application_fees, rating} = items
+  //  useEffect(() => {
+  //   axiosPublic('http://localhost:5000/items')
+  //         .then(res => setItems(res.data))
+          
+  // }, [])
 
 
   return (

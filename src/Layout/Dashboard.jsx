@@ -16,7 +16,8 @@ const Dashboard = () => {
             <ul className="menu">
                 {
                   isAdmin? <><li><NavLink to='/dashboard/profile'>Admin Profile</NavLink></li>
-                  <li><NavLink to='/dashboard/addscholarship'>Add Scholarship</NavLink></li>
+                  <li><NavLink to='/dashboard/scholarshiform'>Add Scholarship</NavLink></li>
+                  <li><NavLink to='/dashboard/manageScholarshiform'>Manage Scholarship</NavLink></li>
                   <li><NavLink to='/dashboard/allapplyscholarship'>Manage Apply ScholarShip</NavLink></li>
                   <li><NavLink to='/dashboard/allusers'>Manage Users</NavLink></li>
                   <li><NavLink to='/dashboard/allreview'>Manage Reviews</NavLink></li>

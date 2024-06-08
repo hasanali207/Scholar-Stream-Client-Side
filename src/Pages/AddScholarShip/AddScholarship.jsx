@@ -6,7 +6,7 @@ import useScholarItems from '../../Hooks/useScholarItems';
 import { useParams } from 'react-router-dom';
 import useAxiosSecure from '../../Hooks/useAxioxSecure';
 
-function AddScholarship() {
+function AddScholarShip () {
   const { user } = useAuth();
   const [scholarItems, refetch] = useScholarItems();
   const { id: itemId } = useParams();  
@@ -18,6 +18,8 @@ function AddScholarship() {
     Category: '',
     Subject: ''
   };
+
+
 
   
   const [items, setItems] = React.useState(null);
@@ -81,7 +83,7 @@ function AddScholarship() {
       </div>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className='grid grid-cols-3 gap-3'>
-          <div>
+          <div className=''>
             <label htmlFor="phone">Phone</label>
             <input type="text" id="phone" {...register("phone", { required: true })} />
             {errors.phone && <span>This field is required</span>}
@@ -180,4 +182,4 @@ function AddScholarship() {
   );
 }
 
-export default AddScholarship;
+export default AddScholarShip ;

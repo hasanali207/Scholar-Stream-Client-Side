@@ -11,10 +11,13 @@ import Dashboard from "../Layout/Dashboard";
 import MyProfile from "../Pages/Dashboard/MyProfile";
 import MyApplication from "../Pages/Dashboard/MyApplication";
 import MyReview from "../Pages/Dashboard/MyReview";
-import AddScholarShip from "../Pages/Dashboard/AddScholarShip";
+import AddScholarShip from "../Pages/Dashboard/ScholarshipForm";
 import AppliedApplication from "../Pages/Dashboard/AppliedApplication";
 import AllUsers from "../Pages/Dashboard/AllUsers";
 import AllReviews from "../Pages/Dashboard/AllReviews";
+import AdminRoute from "../Private/AdminRoute";
+import ScholarshipForm from "../Pages/Dashboard/ScholarshipForm";
+import ManageScholarShip from "../Pages/Dashboard/ManageScholarShip";
 
 const router = createBrowserRouter([
     {
@@ -67,10 +70,14 @@ const router = createBrowserRouter([
                 element:  <MyReview></MyReview>
             },
             {
-                path:'addscholarship',
-                element:  <AddScholarShip></AddScholarShip>
+                path:'scholarshiform',
+                element:  <ScholarshipForm></ScholarshipForm>
             },
             {
+                path:'manageScholarshiform',
+                element:  <ManageScholarShip></ManageScholarShip>
+            },
+            {   
                 path:'allapplyscholarship',
                 element:  <AppliedApplication></AppliedApplication>
             },
