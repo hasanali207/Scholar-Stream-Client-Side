@@ -4,10 +4,13 @@ import { useQuery } from "@tanstack/react-query";
 import { FaDeleteLeft, FaPaintbrush, FaUsers } from "react-icons/fa6";
 import { FaTrashAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
+import useAdmin from "../../Hooks/useAdmin";
+import useModerator from "../../Hooks/useModerator";
 
 const AllUsers = () => {
   const axiosSecure = useAxiosSecure();
-
+  const [isAdmin] = useAdmin();
+  const [isModerator] = useModerator()
   const { refetch, data: users = [] } = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
@@ -23,7 +26,7 @@ const AllUsers = () => {
         Swal.fire({
           position: "center",
           icon: "success",
-          title: `${user.name} is Admin Now`,
+          title: `${user.name} is Moderator Now`,
           showConfirmButton: false,
           timer: 1500,
         });
@@ -87,25 +90,35 @@ const AllUsers = () => {
                 <td>{user.email}</td>
 
                 <td>
+                 
                   {user.role === "admin" ? (
                     "Admin"
+                  ) : user.role === "moderator" ? (
+                    "Moderator"
                   ) : (
                     <button
                       className="btn btn-ghost bg-red-300"
                       onClick={() => handleMakeAdmin(user)}
                     >
-                      <FaUsers></FaUsers>
+                      <FaUsers />
                     </button>
                   )}
                 </td>
 
                 <td>
-                  <button
-                    className="btn btn-ghost bg-red-300"
-                    onClick={() => handleDelete(user._id)}
-                  >
-                    <FaTrashAlt></FaTrashAlt>
-                  </button>
+                  {
+                    user.role === 'admin'? ( <><button
+                      className="btn btn-ghost bg-red-300"
+                      onClick={() => handleDelete(user._id)} disabled
+                    >
+                      <FaTrashAlt></FaTrashAlt>
+                    </button></>) : (  <><button
+                      className="btn btn-ghost bg-red-300"
+                      onClick={() => handleDelete(user._id)}
+                    >
+                      <FaTrashAlt></FaTrashAlt>
+                    </button></>)
+                  }
                 </td>
               </tr>
             ))}

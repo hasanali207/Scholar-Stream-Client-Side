@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useLoaderData, useLocation, useNavigate } from 'react-router-dom';
-import useAuth from '../Hooks/useAuth';
 import Swal from 'sweetalert2';
+import useAuth from '../Hooks/useAuth';
 
 const Details = () => {
     const navigate = useNavigate()
@@ -51,7 +51,7 @@ const Details = () => {
             <p>Application Fees: {applicationFees}</p>
             
             
-            <Link to={`/addScholarship/${_id}`} onClick={handleScholar}>
+            <Link to={`/ApplyScholar/${_id}`} onClick={handleScholar}>
                 <button  className='btn btn-outline my-4'>Apply Scholarship</button>
             </Link>
         </div>

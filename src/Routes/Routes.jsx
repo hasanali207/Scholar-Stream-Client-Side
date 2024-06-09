@@ -1,23 +1,22 @@
 import { createBrowserRouter } from "react-router-dom";
+import Dashboard from "../Layout/Dashboard";
 import Main from "../Layout/Main";
+import AllScholarship from "../Pages/AllScholarship/AllScholarship";
+import ApplyScholar from "../Pages/ApplyScholar/ApplyScholar";
+import AllReviews from "../Pages/Dashboard/AllReviews";
+import AllUsers from "../Pages/Dashboard/AllUsers";
+import AppliedApplication from "../Pages/Dashboard/AppliedApplication";
+import ManageScholarShip from "../Pages/Dashboard/ManageScholarShip";
+import MyApplication from "../Pages/Dashboard/MyApplication";
+import MyProfile from "../Pages/Dashboard/MyProfile";
+import MyReview from "../Pages/Dashboard/MyReview";
+import ScholarshipForm from "../Pages/Dashboard/ScholarshipForm";
+import UpdateScholarShipItems from "../Pages/Dashboard/UpdateScholarShipItems";
 import Home from "../Pages/Home/Home";
 import Login from "../Pages/Shared/Login";
 import Register from "../Pages/Shared/Register";
-import AllScholarship from "../Pages/AllScholarship/AllScholarship";
-import Details from "../components/Details";
-import AddScholarship from "../Pages/AddScholarShip/AddScholarship";
 import PrivateRoute from "../Private/PrivateRoute";
-import Dashboard from "../Layout/Dashboard";
-import MyProfile from "../Pages/Dashboard/MyProfile";
-import MyApplication from "../Pages/Dashboard/MyApplication";
-import MyReview from "../Pages/Dashboard/MyReview";
-import AddScholarShip from "../Pages/Dashboard/ScholarshipForm";
-import AppliedApplication from "../Pages/Dashboard/AppliedApplication";
-import AllUsers from "../Pages/Dashboard/AllUsers";
-import AllReviews from "../Pages/Dashboard/AllReviews";
-import AdminRoute from "../Private/AdminRoute";
-import ScholarshipForm from "../Pages/Dashboard/ScholarshipForm";
-import ManageScholarShip from "../Pages/Dashboard/ManageScholarShip";
+import Details from "../components/Details";
 
 const router = createBrowserRouter([
     {
@@ -41,8 +40,8 @@ const router = createBrowserRouter([
             element: <AllScholarship></AllScholarship>
         },
         {
-            path: "/addScholarship/:id",
-            element: <PrivateRoute><AddScholarship></AddScholarship></PrivateRoute>,
+            path: "/ApplyScholar/:id",
+            element: <PrivateRoute><ApplyScholar></ApplyScholar></PrivateRoute>,
             
         },
         {
@@ -72,6 +71,10 @@ const router = createBrowserRouter([
             {
                 path:'scholarshiform',
                 element:  <ScholarshipForm></ScholarshipForm>
+            },
+            {
+                path:'items/update/:id',
+                element:  <UpdateScholarShipItems></UpdateScholarShipItems>
             },
             {
                 path:'manageScholarshiform',

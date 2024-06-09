@@ -5,6 +5,7 @@ import axios from "axios";
 // import SocialLogin from "./SocialLogin";
 import useAuth from "../../Hooks/useAuth";
 import Swal from "sweetalert2";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const Login = () => {
   const { signInUser } = useAuth();
@@ -22,7 +23,7 @@ const Login = () => {
     const form = new FormData(e.currentTarget);
     const email = form.get("email");
     const password = form.get("password");
-
+    
     
     signInUser(email, password)
             .then(result => {
@@ -72,7 +73,7 @@ const Login = () => {
               onClick={() => setShowPass(!showPass)}
               className="absolute bottom-4 right-2 cursor-pointer"
             >
-              {/* {showPass ? <FaEye /> : <FaEyeSlash />} */}
+              {showPass ? <FaEye /> : <FaEyeSlash />}
             </span>
           </div>
           <div className="form-control">

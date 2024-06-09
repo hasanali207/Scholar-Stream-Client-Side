@@ -80,7 +80,7 @@ const ManageScholarShip = () => {
             <td>{item.applicationFees}</td>
           
             <td><Link to={`/items/${item._id}`}><button className='btn btn-ghost'><FaEye></FaEye></button></Link></td>
-            <td><button className='btn btn-ghost'><FaEdit></FaEdit></button></td>
+            <td><Link to={`/dashboard/items/update/${item._id}`}><button  className='btn btn-ghost'><FaEdit></FaEdit></button></Link></td>
             <td><button onClick={()=>handleDelete(item._id)} className='btn btn-ghost'><FaTrashAlt></FaTrashAlt></button></td>            
             
           </tr>)
