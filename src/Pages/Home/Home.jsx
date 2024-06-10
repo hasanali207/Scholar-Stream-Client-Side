@@ -1,8 +1,13 @@
 import React from 'react'
+import ScholarShipItems from './ScholarShipItems'
 
 const Home = () => {
   return (
-    <div>This is Home</div>
+    <div>
+
+
+      <ScholarShipItems></ScholarShipItems>
+    </div>
   )
 }
 
