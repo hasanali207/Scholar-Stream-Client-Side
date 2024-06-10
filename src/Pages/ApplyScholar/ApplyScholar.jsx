@@ -30,6 +30,7 @@ function ApplyScholar() {
         setValue('scholarshipCategory', data.scholarshipCategory || '');
         setValue('subjectCategory', data.subjectCategory || '');
         setValue('applicationFees', data.applicationFees || '');
+        setValue('scholarshipName', data.scholarshipName || '');
         setValue('serviceCharge', data.serviceCharge || '');
         setValue('university_address', data.universityCountry + ' ' + data.universityCity || '');
         
@@ -59,9 +60,10 @@ function ApplyScholar() {
      if(res.data.success){
      const applicationFees = data.applicationFees
      const serviceCharge = data.serviceCharge
+     const scholarshipName = data.scholarshipName
       const applicantImage = res.data.data.display_url
       const status = 'pending' 
-      const dataWithId = { ...data, itemId, cureentDate, applicantImage, applicationFees, serviceCharge, status  };
+      const dataWithId = { ...data, itemId, cureentDate, applicantImage, applicationFees, serviceCharge, scholarshipName, status  };
         await axiosSecure.post(`/scholarfromuser`, dataWithId);
         Swal.fire({
           title: "Applied Successfully",
@@ -155,6 +157,11 @@ function ApplyScholar() {
                 </select>
               )}
             />
+          </div>
+          <div>
+            <label htmlFor="scholarshipName">ScholarShip Name</label>
+            <input type="text" id="university_name" {...register("scholarshipName", { required: true })} disabled />
+            {errors.university_name && <span>This field is required</span>}
           </div>
           <div>
             <label htmlFor="university_name">University Name</label>

@@ -37,6 +37,28 @@ const AppliedApplication = () => {
         console.error("Error sending feedback:", error);
       });
   };
+  const handleStatus = (id) => {
+    axiosSecure
+      .patch(`/user/status/${id}`)
+      .then((res) => {
+        if (res.data.modifiedCount > 0) {
+          refetch();
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: `Your Data Is Now Procceed`,
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          setFeedback("");
+          setCurrentItemId(null);
+          document.getElementById(`modal_${currentItemId}`).close();
+        }
+      })
+      .catch((error) => {
+        console.error("Error sending feedback:", error);
+      });
+  };
 
   const handleDelete = (id) => {
     Swal.fire({
