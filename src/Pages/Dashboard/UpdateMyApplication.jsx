@@ -1,97 +1,74 @@
 import React, { useEffect, useState } from 'react';
-import { Controller, useForm } from 'react-hook-form';
 import { useParams } from 'react-router-dom';
-import Swal from 'sweetalert2';
 import useAuth from '../../Hooks/useAuth';
 import useAxiosSecure from '../../Hooks/useAxioxSecure';
-import useScholarItems from '../../Hooks/useScholarItems';
 import useAxiosPublic from '../../Hooks/useAxiosPublic';
+import { Controller, useForm } from 'react-hook-form';
+import Swal from 'sweetalert2';
 
-
-function ApplyScholar() {
+const UpdateMyApplication = () => {
+  const { id } = useParams();
   const { user } = useAuth();
-  const [scholarItems, refetch] = useScholarItems();
-  const { id: itemId } = useParams();
+  const { control, register, handleSubmit, formState: { errors }, setValue } = useForm();
   const axiosSecure = useAxiosSecure();
-  const axiosPublic = useAxiosPublic()
-  const [isLoading, setIsLoading] = useState(true);
-
-  const { control, register, handleSubmit, formState: { errors }, reset, setValue } = useForm();
+  const axiosPublic = useAxiosPublic();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axiosSecure(`/singleItem/${itemId}`);
+        const res = await axiosSecure(`/scholaritem/update/${id}`);
         const data = res.data;
-        console.log(data)
         setValue('user_email', user?.email || '');
         setValue('user_name', user?.displayName || '');
-        setValue('university_name', data.university_name || '');
-        setValue('scholarshipCategory', data.scholarshipCategory || '');
-        setValue('subjectCategory', data.subjectCategory || '');
-        setValue('applicationFees', data.applicationFees || '');
-        setValue('serviceCharge', data.serviceCharge || '');
-        setValue('university_address', data.universityCountry + ' ' + data.universityCity || '');
-        setIsLoading(false);  
+        setValue('phone', data.phone || '');
+        setValue('address', data.address || '');
+        setValue('applicantName', data.applicantName || '');
+        setValue('ssc', data.ssc || '');
+        setValue('hsc', data.hsc || '');
+        setValue('gender', data.gender || '');
+        setValue('degree', data.degree || '');
       } catch (error) {
-        console.error('Error fetching item:', error);
-        setIsLoading(false);
+        console.error('Error fetching data:', error);
       }
     };
-    fetchData();
-  }, [itemId, user, axiosSecure, setValue]);
 
+    fetchData();
+  }, [id, user?.email, user?.displayName, setValue, axiosSecure]);
 
   const onSubmit = async (data) => {
-    const cureentDate = new Date().toLocaleDateString()
-     // image upload to imgbb and then get an url
-     
-     const imageFile = { image: data.applicantImage[0] }
-     const res = await axiosPublic.post(`https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_IMAGE_BB_API}`, imageFile, {
-         headers: {
-             'content-type': 'multipart/form-data'
-         }
-     });
+    const imageFile = { image: data.applicantImage[0] };
+    try {
+      const res = await axiosPublic.post(`https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_IMAGE_BB_API}`, imageFile, {
+        headers: {
+          'content-type': 'multipart/form-data'
+        }
+      });
 
-   
-    
-     if(res.data.success){
-     const applicationFees = data.applicationFees
-     const serviceCharge = data.serviceCharge
-      const applicantImage = res.data.data.display_url
-      const dataWithId = { ...data, itemId, cureentDate, applicantImage, applicationFees, serviceCharge  };
-        await axiosSecure.post(`/scholarfromuser`, dataWithId);
+      if (res.data.success) {
+        const applicantImage = res.data.data.display_url;
+        const updatedData = { ...data, applicantImage };
+        
+
+        const updateRes = await axiosSecure.patch(`scholaritem/updateItem/${id}`, updatedData);
+        console.log('Update Response:', updateRes.data);
+
+        // await axiosSecure.patch(`scholaritem/updateItem/${id}`, updatedData);
         Swal.fire({
-          title: "Applied Successfully",
-          text: "Applied Success & record this!",
+          title: "Updated Successfully",
+          text: "Scholarship Data Updated & record this!",
           icon: "success",
           confirmButtonColor: "#3085d6",
           cancelButtonColor: "#d33",
           confirmButtonText: "Okay!"
         });
-        refetch();
-      } 
-  
-     
-
-    
-
-
+      }
+    } catch (error) {
+      console.error('Error updating data:', error);
+    }
   };
-
-
- 
-
-  if (isLoading) {
-    return <p>Loading...</p>;
-  }
 
   return (
     <div>
-      <div className='py-12 flex items-center justify-center'>
-        <h2 className='text-3xl font-bold'>Provide Information</h2>
-        <p>{scholarItems.length}</p>
-      </div>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className='grid grid-cols-3 gap-3'>
           <div>
@@ -101,7 +78,7 @@ function ApplyScholar() {
           </div>
           <div className='form-control w-full'>
             <label>Applicant Image/Logo</label>
-            <input type="file"  {...register("applicantImage", { required: true })} className="" />
+            <input type="file" {...register("applicantImage", { required: true })} className="" />
             {errors.applicantImage && <span>This field is required</span>}
           </div>
           <div>
@@ -124,7 +101,7 @@ function ApplyScholar() {
             <input type="text" id="hsc" {...register("hsc", { required: true })} />
             {errors.hsc && <span>This field is required</span>}
           </div>
-                    <div>
+          <div>
             <label htmlFor="gender">Gender</label>
             <Controller
               name="gender"
@@ -155,26 +132,6 @@ function ApplyScholar() {
             />
           </div>
           <div>
-            <label htmlFor="university_name">University Name</label>
-            <input type="text" id="university_name" {...register("university_name", { required: true })} disabled />
-            {errors.university_name && <span>This field is required</span>}
-          </div>
-          <div>
-            <label htmlFor="University Address">University Address</label>
-            <input type="text" id="address" {...register("university_address", { required: true })} disabled />
-            {errors.address && <span>This field is required</span>}
-          </div>
-          <div>
-            <label htmlFor="scholarshipCategory">Scholarship Category</label>
-            <input type="text" id="scholarshipCategory" {...register("scholarshipCategory", { required: true })} disabled />
-            {errors.scholarshipCategory && <span>This field is required</span>}
-          </div>
-          <div>
-            <label htmlFor="subjectCategory">Subject Category</label>
-            <input type="text" id="subjectCategory" {...register("subjectCategory", { required: true })} disabled />
-            {errors.subjectCategory && <span>This field is required</span>}
-          </div>
-          <div>
             <label htmlFor="user_email">User Email</label>
             <input type="text" id='user_email' {...register("user_email")} disabled />
           </div>
@@ -183,13 +140,12 @@ function ApplyScholar() {
             <input type="text" id='user_name' {...register("user_name")} disabled />
           </div>
         </div>
-      
         <div>
-          <button className='btn btn-outline w-40 mt-4' type="submit">Add</button>
+          <button className='btn btn-outline w-40 mt-4' type="submit">Update</button>
         </div>
       </form>
     </div>
   );
 }
 
-export default ApplyScholar;
+export default UpdateMyApplication;

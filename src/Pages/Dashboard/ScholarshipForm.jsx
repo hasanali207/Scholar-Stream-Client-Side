@@ -29,8 +29,8 @@ const axiosPublic = useAxiosPublic()
 
       await axiosSecure.post(`/items`, setData);
       Swal.fire({
-        title: "Applied Successfully",
-        text: "Applied Success & record this!",
+        title: "Added Successfully",
+        text: "Added Success & record this!",
         icon: "success",
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",

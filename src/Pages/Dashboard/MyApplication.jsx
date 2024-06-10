@@ -57,16 +57,17 @@ const MyApplication = () => {
     {/* head */}
     <thead>
       <tr>
-        <th>University Name</th>
+        <th>UN Name</th>
         <th>UN: Address</th>
         <th>App: Feedback</th>
         <th>Subject Cat:</th>
-        <th>Applied Degree</th>
+        <th>Apply Degree</th>
+        <th>Apply Fees</th>
         <th>Services Charge</th>
-        <th>App: Satatus</th>
+        <th>Status</th>
         <th>Details</th>
         <th>Edit</th>
-        <th>Cancel</th>
+        <th>Cancel</th> 
        
       </tr>
     </thead>
@@ -74,15 +75,16 @@ const MyApplication = () => {
       {/* row 1 */}
     {
         scholaritems.map((item) =>   <tr key={item._id} >
-            <td>{item.university}</td>
-            <td>{item.address}</td>
-            <td>{item.Subject}</td>
-            <td>{item.Subject}</td>
-            <td>{item.Subject}</td>
-            <td>{item.Subject}</td>
-            <td>{item.Subject}</td>
+            <td>{item.university_name}</td>
+            <td>{item.university_address}</td>
+            <td>Feedback</td>
+            <td>{item.subjectCategory}</td>
+            <td>{item.degree}</td>
+            <td>{item.applicationFees}</td>
+            <td>{item.serviceCharge}</td>
+            <td>Pending</td>
             <td><Link  to={`/items/${item.itemId}`}><button className='btn btn-ghost'><FaEye></FaEye></button></Link></td>
-            <td><button className='btn btn-ghost'><FaEdit></FaEdit></button></td>
+            <td><Link to={`/dashboard/scholaritem/update/${item._id}`} ><button className='btn btn-ghost'><FaEdit></FaEdit></button></Link></td>
             <td><button onClick={()=>handleDelete(item._id)} className='btn btn-ghost'><FaTrashAlt></FaTrashAlt></button></td>            
             <td><button className='btn btn-outline'>Add Review  </button></td>
           </tr>)

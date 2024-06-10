@@ -17,6 +17,7 @@ import Login from "../Pages/Shared/Login";
 import Register from "../Pages/Shared/Register";
 import PrivateRoute from "../Private/PrivateRoute";
 import Details from "../components/Details";
+import UpdateMyApplication from "../Pages/Dashboard/UpdateMyApplication";
 
 const router = createBrowserRouter([
     {
@@ -61,7 +62,7 @@ const router = createBrowserRouter([
                 element:  <MyProfile></MyProfile>
             },
             {
-                path:'applicaiton',
+                path:'application',
                 element:  <MyApplication></MyApplication>
             },
             {
@@ -75,6 +76,10 @@ const router = createBrowserRouter([
             {
                 path:'items/update/:id',
                 element:  <UpdateScholarShipItems></UpdateScholarShipItems>
+            },
+            {
+                path:'scholaritem/update/:id',
+                element:  <UpdateMyApplication></UpdateMyApplication>
             },
             {
                 path:'manageScholarshiform',
