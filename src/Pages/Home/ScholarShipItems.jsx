@@ -19,6 +19,8 @@ const ScholarShipItems = () => {
   useEffect(() => {
     setSortedItems([...items]);
   }, [items]);
+
+
   const sortByPrice = () => {
     const sortedItems = [...items].sort((a, b) => a.tuitionFees - b.tuitionFees);
     setSortedItems(sortedItems);
@@ -35,14 +37,20 @@ const ScholarShipItems = () => {
 
   return (
     <>
-      <div className="flex justify-end">
-        <button onClick={sortByPrice} className="btn btn-primary mr-3">
-          Sort by Price (Low to High)
-        </button>
-        <button onClick={sortByRecent} className="btn btn-primary">
-          Sort by Recent Post
-        </button>
+      <div className="flex justify-between mt-10">
         
+        
+       
+ <button onClick={sortByPrice} className="btn bg-green-200 text-black">
+          Low to Hight Price
+        </button>
+ <button onClick={sortByRecent} className="btn bg-green-200 text-black">
+           Recent Post
+        </button>
+  
+   
+
+
       </div>
 
       <div className="grid grid-cols-3 gap-6 mt-10">

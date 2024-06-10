@@ -39,50 +39,42 @@ const AllReviews = () => {
 
 
   return (
-    <div>{reviews.length}
-      <div>
-      <div className="overflow-x-auto">
-  <table className="table table-zebra">
-    {/* head */}
-    <thead>
-      <tr>
-        <th>UN Name</th>
-        <th>ScholarshipName</th>
-        <th>Image</th>
-        <th>Name</th>
-        <th>Review Date</th>
-        <th>Rating</th>
-        <th>Comment</th>
-        <th>Delete</th>
-      </tr>
-    </thead>
-    <tbody>
-      {/* row 1 */}
-      {reviews.map(item => <tr key={item._id} className="bg-base-200">
-        <td>{item.university_name}</td>
-        <td>{item.scholarshipName}</td>
-        <td><img className='w-20 h-20 object-cover rounded-lg' src={item.user_image} alt="" /></td>
-        <td>{item.currentDate}</td>
-        <td>{item.user_name}</td>
-        <td><Rating
+    <>
+          <div className="flex flex-col justify-center max-w-xs p-6 shadow-md rounded-xl sm:px-12 dark:bg-gray-50 dark:text-gray-800">
+  
+
+       
+      {reviews.map(item => <div key={item._id} className="text-center">
+        <p><img className='w-32 h-32 mx-auto rounded-full dark:bg-gray-500 aspect-square' src={item.user_image} alt="" /></p>
+        <div className="my-2 space-y-1">
+			<h2 className="text-xl font-semibold sm:text-2xl">{item.user_name}</h2>
+			<p className="px-5 text-xs sm:text-base dark:text-gray-600">{item.currenpate}</p>
+		</div>
+        <div className="my-2 space-y-1">
+			<h2 className="text-sm font-semibold sm:text-2xl">{item.university_name}</h2>
+			<p className="px-5 text-xl">{item.scholarshipName}</p>
+		</div>
+        
+      
+        <p><Rating
         initialRating={item.rating}
         readonly={true}
         emptySymbol={<FaRegStar></FaRegStar>}
         fullSymbol={<FaStar className='text-yellow-500'></FaStar>}
-      /></td>
-        <td>{item.review_comment}</td>
-        <td><button onClick={() => handleDelete(item._id)} className="btn btn-ghost">
-                    <FaTrashAlt />
-                  </button></td>
+      /></p>
+        <p>{item.review_comment}</p>
+        <button onClick={() => handleDelete(item._id)} className="btn btn-ghost">
+                   Delete
+                  </button>
         
-      </tr>)}
-         
-    </tbody>
-  </table>
-</div>
-      </div>
+      </div>)}
+       
     
-    </div>
+ 
+</div>
+      
+    
+      </>
   )
 }
 

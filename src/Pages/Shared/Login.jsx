@@ -1,10 +1,7 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
-import axios from "axios";
-// import SocialLogin from "./SocialLogin";
-import useAuth from "../../Hooks/useAuth";
-import Swal from "sweetalert2";
+import useAuth from "../../Hooks/useAuth"; // Ensure this path is correct based on your project structure
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const Login = () => {
@@ -15,34 +12,30 @@ const Login = () => {
   const location = useLocation();
 
   const from = location.state?.from?.pathname || "/";
-  
-  
 
   const handleLogin = async (e) => {
     e.preventDefault();
     const form = new FormData(e.currentTarget);
     const email = form.get("email");
     const password = form.get("password");
-    
-    
-    signInUser(email, password)
-            .then(result => {
-                const user = result.user;
-                console.log(user);
-               toast.success('User Loged In Successfully')
-                navigate(from, { replace: true });
-            })
 
-
-    
-};
-
+    try {
+      const result = await signInUser(email, password);
+      const user = result.user;
+      console.log(user);
+      toast.success("User Logged In Successfully");
+      navigate(from, { replace: true });
+    } catch (error) {
+      console.error("Error logging in:", error);
+      toast.error("Failed to log in. Please check your credentials.");
+    }
+  };
 
   return (
     <div className="flex justify-center items-center">
       <div className="card shadow-2xl my-10 bg-slate-100 w-full md:w-1/2 lg:w-1/3">
         <h1 className="text-center text-2xl text-black font-semibold mt-6">
-           Login
+          Login
         </h1>
 
         <form onSubmit={handleLogin} className="card-body p-6">
