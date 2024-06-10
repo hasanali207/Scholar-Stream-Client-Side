@@ -32,6 +32,7 @@ function ApplyScholar() {
         setValue('applicationFees', data.applicationFees || '');
         setValue('serviceCharge', data.serviceCharge || '');
         setValue('university_address', data.universityCountry + ' ' + data.universityCity || '');
+        
         setIsLoading(false);  
       } catch (error) {
         console.error('Error fetching item:', error);
@@ -59,7 +60,8 @@ function ApplyScholar() {
      const applicationFees = data.applicationFees
      const serviceCharge = data.serviceCharge
       const applicantImage = res.data.data.display_url
-      const dataWithId = { ...data, itemId, cureentDate, applicantImage, applicationFees, serviceCharge  };
+      const status = 'pending' 
+      const dataWithId = { ...data, itemId, cureentDate, applicantImage, applicationFees, serviceCharge, status  };
         await axiosSecure.post(`/scholarfromuser`, dataWithId);
         Swal.fire({
           title: "Applied Successfully",

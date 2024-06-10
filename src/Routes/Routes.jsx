@@ -18,11 +18,13 @@ import Register from "../Pages/Shared/Register";
 import PrivateRoute from "../Private/PrivateRoute";
 import Details from "../components/Details";
 import UpdateMyApplication from "../Pages/Dashboard/UpdateMyApplication";
+import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 
 const router = createBrowserRouter([
     {
       path: "/",
       element: <Main></Main>,
+      errorElement: <ErrorPage></ErrorPage>,
       children: [
         {
             path: "/",

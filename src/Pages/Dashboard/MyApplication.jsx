@@ -5,11 +5,20 @@ import { FaEdit, FaTrashAlt } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 import useAxiosSecure from '../../Hooks/useAxioxSecure'
 import Swal from 'sweetalert2'
+import toast from 'react-hot-toast'
 
 const MyApplication = () => {
     const [scholaritems, refetch] = useScholarItems()
     const axiosSecure = useAxiosSecure()
     
+   
+    const handleClick = () => {
+     
+        toast.error('You cannot edit. It is being processed');
+      
+    };
+
+
     const handleDelete = (id) =>{
       Swal.fire({
         title: "Are you sure?",
@@ -77,14 +86,29 @@ const MyApplication = () => {
         scholaritems.map((item) =>   <tr key={item._id} >
             <td>{item.university_name}</td>
             <td>{item.university_address}</td>
-            <td>Feedback</td>
+            <td>{item.feedback}</td>
             <td>{item.subjectCategory}</td>
             <td>{item.degree}</td>
             <td>{item.applicationFees}</td>
             <td>{item.serviceCharge}</td>
-            <td>Pending</td>
+            <td>{item.status}</td>
+           
             <td><Link  to={`/items/${item.itemId}`}><button className='btn btn-ghost'><FaEye></FaEye></button></Link></td>
-            <td><Link to={`/dashboard/scholaritem/update/${item._id}`} ><button className='btn btn-ghost'><FaEdit></FaEdit></button></Link></td>
+
+            <td>
+      {item.status === 'processing' ? (
+        <button className='btn btn-ghost' onClick={handleClick}>
+          <FaEdit />
+        </button>
+      ) : (
+        <Link to={`/dashboard/scholaritem/update/${item._id}`}>
+          <button className='btn btn-ghost'>
+            <FaEdit />
+          </button>
+        </Link>
+      )}
+    </td>
+
             <td><button onClick={()=>handleDelete(item._id)} className='btn btn-ghost'><FaTrashAlt></FaTrashAlt></button></td>            
             <td><button className='btn btn-outline'>Add Review  </button></td>
           </tr>)
