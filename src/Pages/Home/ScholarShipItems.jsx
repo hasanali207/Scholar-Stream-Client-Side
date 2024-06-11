@@ -22,7 +22,7 @@ const ScholarShipItems = () => {
 
 
   const sortByPrice = () => {
-    const sortedItems = [...items].sort((a, b) => a.tuitionFees - b.tuitionFees);
+    const sortedItems = [...items].sort((a, b) => a.applicationFees - b.applicationFees);
     setSortedItems(sortedItems);
   };
 
@@ -62,8 +62,12 @@ const ScholarShipItems = () => {
             <div className="card-body items-center text-center">
               <h2 className="card-title">{item.university_name}</h2>
               <p>{item.scholarship_category }</p>
-              <p>{item.tuitionFees }</p>
-              <p>{item.scholarshipPostDate }</p>
+              <p>{item.universityCountry }, {item.universityCity}</p>
+              <p>Application Fees: {item.applicationFees }</p>
+             
+             <p>Post Date: {item.scholarshipPostDate }</p>
+             <p>Deadline: {item.applicationDeadline }</p>
+            
               <div className="card-actions">
                 <Link to={`/items/${item._id}`}>
                   <button className="btn btn-outline my-4 ml-3">
