@@ -12,7 +12,7 @@ const Slider = () => {
   return (
     <div className="">
       <Swiper
-        className="rounded-2xl z-0"
+        className=" lg:rounded-2xl z-0 mt-5"
         // install Swiper modules
         modules={[Navigation, Pagination, Scrollbar, A11y]}
         spaceBetween={50}
@@ -22,20 +22,17 @@ const Slider = () => {
         pagination={{ clickable: true }}
       >
         <SwiperSlide>
-          <img src='https://i.ibb.co/BZs0sWp/7.jpg' alt="" />
+          <img className="w-full object-cover" src='https://i.ibb.co/ZRjXN12/2.jpg' alt="" />
         </SwiperSlide>
         <SwiperSlide>
           
-          <img src="https://i.ibb.co/C8KCzNz/8.png" alt="" />
+          <img className="w-full object-cover" src="https://i.ibb.co/fNpRfdp/3.jpg" alt="" />
         </SwiperSlide>
         <SwiperSlide>
           
-          <img src="https://i.ibb.co/X3qxrRh/9.jpg" alt="" />
+          <img  className="w-full object-cover" src="https://i.ibb.co/12FvKtx/1.jpg" alt="" />
         </SwiperSlide>
-        <SwiperSlide>
-          
-          <img src="https://i.ibb.co/M7YJk7X/10.png" alt="" />
-        </SwiperSlide>
+        
       </Swiper>
      
 

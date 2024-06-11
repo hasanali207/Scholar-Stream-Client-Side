@@ -16,25 +16,10 @@ const AllScholarship = () => {
   const [sortedItems, setSortedItems] = useState([...items]);
   
 
-
- 
- 
-  
-
-  
-
   useEffect(() => {
     setSortedItems([...items]);
   }, [items]);
-  const sortByPrice = () => {
-    const sortedItems = [...items].sort((a, b) => a.tuitionFees - b.tuitionFees);
-    setSortedItems(sortedItems);
-  };
 
-  const sortByRecent = () => {
-    const sortedItems = [...items].sort((a, b) => new Date(b.scholarshipPostDate) - new Date(a.scholarshipPostDate));
-    setSortedItems(sortedItems);
-  };
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 9;
 
@@ -53,15 +38,7 @@ const AllScholarship = () => {
 
   return (
     <>
-      <div className="flex justify-end">
-        <button onClick={sortByPrice} className="btn btn-primary mr-3">
-          Sort by Price (Low to High)
-        </button>
-        <button onClick={sortByRecent} className="btn btn-primary">
-          Sort by Recent Post
-        </button>
-        
-      </div>
+    
 
       <div className="grid grid-cols-3 gap-6 mt-10">
         {items.length > 0 && currentItems.map(item => (
@@ -87,10 +64,10 @@ const AllScholarship = () => {
       </div> 
 
 
-      <div className="flex justify-end">
+      <div className="flex justify-center gap-3 mt-5">
        
         {pageNumbers.map(number => (
-          <button key={number} onClick={() => paginate(number)} className="btn btn-primary">
+          <button key={number} onClick={() => paginate(number)} className="btn bg-green-300">
             {number}
           </button>
         ))}

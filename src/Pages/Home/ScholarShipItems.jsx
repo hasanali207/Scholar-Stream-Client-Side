@@ -37,7 +37,7 @@ const ScholarShipItems = () => {
 
   return (
     <>
-      <div className="flex justify-between mt-10">
+      <div className="flex  justify-between mt-10 ">
         
         
        
@@ -53,7 +53,7 @@ const ScholarShipItems = () => {
 
       </div>
 
-      <div className="grid grid-cols-3 gap-6 mt-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-10 p-4  lg:p-0">
         {items.length > 0 && sortedItems.slice(0,6).map(item => (
           <div key={item._id} className="card border">
             <figure className="border-b p-2">
