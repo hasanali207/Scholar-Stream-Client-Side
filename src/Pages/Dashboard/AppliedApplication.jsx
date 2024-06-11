@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import useAllScholarItems from "../../Hooks/useAllScholarItems";
 import { FaEye, FaEdit, FaTrashAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import useAxiosSecure from "../../Hooks/useAxioxSecure";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../../Hooks/useAxioxSecure";
 
 const AppliedApplication = () => {
   const [allscholaritems, refetch] = useAllScholarItems();
@@ -17,7 +17,7 @@ const AppliedApplication = () => {
 
   const handleSubmitFeedback = () => {
     axiosSecure
-      .patch(`/user/status/${currentItemId}`, { feedback })
+      .patch(`/feedback/${currentItemId}`, { feedback })
       .then((res) => {
         if (res.data.modifiedCount > 0) {
           refetch();
@@ -37,6 +37,7 @@ const AppliedApplication = () => {
         console.error("Error sending feedback:", error);
       });
   };
+
   const handleStatus = (id) => {
     axiosSecure
       .patch(`/user/status/${id}`)
@@ -50,9 +51,7 @@ const AppliedApplication = () => {
             showConfirmButton: false,
             timer: 1500,
           });
-          setFeedback("");
-          setCurrentItemId(null);
-          document.getElementById(`modal_${currentItemId}`).close();
+          
         }
       })
       .catch((error) => {
@@ -110,7 +109,6 @@ const AppliedApplication = () => {
               <th>App: Status</th>
               <th>Details</th>
               <th>Cancel</th>
-              <th>Review</th>
             </tr>
           </thead>
           <tbody>
@@ -175,9 +173,7 @@ const AppliedApplication = () => {
                     <FaTrashAlt />
                   </button>
                 </td>
-                <td>
-                  <button className="btn btn-outline">Add Review </button>
-                </td>
+               
               </tr>
             ))}
           </tbody>
