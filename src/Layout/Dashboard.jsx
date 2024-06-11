@@ -12,8 +12,8 @@ const Dashboard = () => {
   return (
     <>
       <Navbar />
-      <div className='flex max-w-7xl mx-auto'>
-        <div className='w-52 min-h-screen bg-slate-200'>
+      <div className='flex flex-col lg:flex-row w-7xl mx-auto'>
+        <div className=' w-full lg:w-52 lg:min-h-screen bg-slate-200'>
           <ul className="menu">
             {isAdmin ? (
               <>
@@ -41,7 +41,7 @@ const Dashboard = () => {
             )}
           </ul>
         </div>
-        <div className='flex-1'>
+        <div className='flex-1 p-6'>
           <Outlet />
         </div>
       </div>  

@@ -116,8 +116,10 @@ const MyReview = () => {
               <th>Comment</th>
               <th>Rating</th>
               <th>Review Date</th>
-              <th>Edit</th>
               <th>Cancel</th>
+              <th>Edit</th>
+             
+              
             </tr>
           </thead>
           <tbody>

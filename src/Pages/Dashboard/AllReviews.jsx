@@ -40,15 +40,15 @@ const AllReviews = () => {
 
   return (
     <>
-          <div className="flex flex-col justify-center max-w-xs p-6 shadow-md rounded-xl sm:px-12 dark:bg-gray-50 dark:text-gray-800">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-4">
   
 
        
-      {reviews.map(item => <div key={item._id} className="text-center">
+      {reviews.map(item => <div key={item._id} className="text-center flex flex-col justify-center shadow-md rounded-xl  dark:bg-gray-50 dark:text-gray-800 space-y-3 border py-3 px-1">
         <p><img className='w-32 h-32 mx-auto rounded-full dark:bg-gray-500 aspect-square' src={item.user_image} alt="" /></p>
         <div className="my-2 space-y-1">
 			<h2 className="text-xl font-semibold sm:text-2xl">{item.user_name}</h2>
-			<p className="px-5 text-xs sm:text-base dark:text-gray-600">{item.currenpate}</p>
+			<p className="px-5 text-xs sm:text-base dark:text-gray-600">Date: {item.currentDate}</p>
 		</div>
         <div className="my-2 space-y-1">
 			<h2 className="text-sm font-semibold sm:text-2xl">{item.university_name}</h2>
@@ -63,7 +63,7 @@ const AllReviews = () => {
         fullSymbol={<FaStar className='text-yellow-500'></FaStar>}
       /></p>
         <p>{item.review_comment}</p>
-        <button onClick={() => handleDelete(item._id)} className="btn btn-ghost">
+        <button onClick={() => handleDelete(item._id)} className="btn btn-ghost bg-slate-300">
                    Delete
                   </button>
         
