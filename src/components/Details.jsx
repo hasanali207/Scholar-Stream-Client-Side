@@ -16,12 +16,13 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
+import useAxiosPublic from '../Hooks/useAxiosPublic';
 
 const Details = () => {
-  const navigate = useNavigate();
-  const location = useLocation();
+
   const item = useLoaderData();
   const [reviews] = useReviews();
+  const axiosPublic = useAxiosPublic()
   const {
     scholarshipName, university_name, university_image, universityCountry,
     universityCity, universityWorldRank, subjectCategory, scholarshipCategory,
@@ -31,23 +32,21 @@ const Details = () => {
   const { user } = useAuth();
 
   const handleScholar = () => {
-    if (user && user.email) {
-      // Handle scholarship application logic here
-    } else {
-      Swal.fire({
-        title: "Please Login First",
-        text: "You need to log in to apply for this scholarship!",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Yes, log in!"
-      }).then((result) => {
-        if (result.isConfirmed) {
-          navigate('/login', { state: { from: location } });
-        }
-      });
-    }
+    const totalFee = serviceCharge + applicationFees;
+
+  // Create the data object to send
+  const dataInfo = {
+    totalFee,
+    _id
+  };
+  
+  
+  axiosPublic.post('/payment', dataInfo)
+      .then(res => {
+        window.location.replace(res.data.url)
+      })
+
+
   };
 
   return (
@@ -65,8 +64,10 @@ const Details = () => {
           <p>Deadline: {applicationDeadline}</p>
           <p>Subject Category: {subjectCategory}</p>
           <p>Application Fees: {applicationFees}</p>
-          <Link to={`/ApplyScholar/${_id}`} onClick={handleScholar}>
-            <button className="btn btn-outline my-4">Apply Scholarship</button>
+          <p>Application Fees: {serviceCharge}</p>
+          <Link  > 
+          {/* to={`/ApplyScholar/${_id}`} */}
+            <button onClick={ handleScholar} className="btn btn-outline my-4">Apply Scholarship</button>
           </Link>
         </div>
       </div>
