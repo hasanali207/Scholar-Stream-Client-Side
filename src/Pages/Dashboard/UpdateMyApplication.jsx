@@ -70,7 +70,7 @@ const UpdateMyApplication = () => {
   return (
     <div>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div className='grid grid-cols-3 gap-3'>
+        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3'>
           <div>
             <label htmlFor="phone">Phone</label>
             <input type="text" id="phone" {...register("phone", { required: true })} />

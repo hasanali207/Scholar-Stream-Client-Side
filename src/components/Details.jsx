@@ -21,6 +21,7 @@ import useAxiosPublic from '../Hooks/useAxiosPublic';
 const Details = () => {
 
   const item = useLoaderData();
+  console.log(item)
   const [reviews] = useReviews();
   const axiosPublic = useAxiosPublic()
   const {
@@ -65,10 +66,10 @@ const Details = () => {
           <p>Subject Category: {subjectCategory}</p>
           <p>Application Fees: {applicationFees}</p>
           <p>Application Fees: {serviceCharge}</p>
-          <Link  > 
+         
           {/* to={`/ApplyScholar/${_id}`} */}
             <button onClick={ handleScholar} className="btn btn-outline my-4">Apply Scholarship</button>
-          </Link>
+         
         </div>
       </div>
 

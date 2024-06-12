@@ -50,7 +50,7 @@ const router = createBrowserRouter([
         {
             path: "/items/:id",
             element: <PrivateRoute><Details></Details></PrivateRoute>,
-            loader:({params}) => fetch(`http://localhost:5000/singleItem/${params.id}`)
+            loader:({params}) => fetch(`https://scholar-stream-server.vercel.app/singleItem/${params.id}`)
             
         }
       ]

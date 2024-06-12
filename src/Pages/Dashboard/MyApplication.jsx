@@ -195,6 +195,7 @@ const MyApplication = () => {
                             {...register("review_comment")}
                             className="border border-gray-300 rounded-md p-2 w-full"
                             rows={4}
+                            defaultValue='Add Your Comment'
                           ></textarea>
                         </div>
                         <button type="submit" className="btn">

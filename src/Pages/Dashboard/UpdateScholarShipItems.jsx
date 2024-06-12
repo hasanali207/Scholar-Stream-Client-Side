@@ -77,7 +77,7 @@ const UpdateScholarShipItems = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <div className='grid grid-cols-3 gap-4'>
+      <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
         <div className='form-control w-full'>
           <label>Scholarship Name</label>
           <input {...register('scholarshipName', { required: true })} className="input input-bordered w-full" />
