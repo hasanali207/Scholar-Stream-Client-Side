@@ -32,6 +32,17 @@ const handleGithubSignIn = () =>{
   githubLogin()
   .then(result => {
     console.log(result.user)
+    const userInfo = {
+      name: result.user.displayName,
+      email: result.user.email
+    }
+    axiosPublic.post('/users',userInfo)
+    .then(res => {
+      console.log(res.data)
+      navigate('/')
+    })
+
+
   })
 }
     
@@ -41,10 +52,10 @@ const handleGithubSignIn = () =>{
     return (
         <>
             <div className="flex justify-between p-4">
-              <button onClick={handleGoogleSignIn} className="btn btn-outline w-full"><span className=""> <IoLogoGoogleplus className='text-xl mr-3'></IoLogoGoogleplus></span>
+              <button onClick={handleGoogleSignIn} className="btn btn-outline "><span className=""> <IoLogoGoogleplus className='text-xl mr-3'></IoLogoGoogleplus></span>
                 Google Login 
               </button>
-              
+              <button onClick={handleGithubSignIn}  type="button" className=" btn btn-outline  "><span className=""> <FaGithub className='text-xl mr-3'></FaGithub></span> Github Login</button>
             </div>
         </>
     );
